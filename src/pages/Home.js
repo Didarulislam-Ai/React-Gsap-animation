@@ -1,22 +1,16 @@
+import './../css/App.css';
 
-export default function App() {
+export default function Home() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <Welcome name="Didarul" />
-                <img src={logo} className="App-logo" alt="logo" />
+        <div className="App_home">
+            <header className="App-header__home">
                 <p>
-                    Edit <code>src/App.js</code> and save to reload.
+                    Welcome to the Application Universe.
                 </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
+                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+                    Learn Development
                 </a>
             </header>
         </div>
-    )
+    );
 }

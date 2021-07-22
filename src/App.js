@@ -1,11 +1,18 @@
 import logo from './logo.svg';
-import './App.css';
+
+
+import Home from './pages/Home';
+import About from './pages/About';
+import Project from './pages/Project';
+import Contact from './pages/Contact';
+
 
 //Import react-routerdom
 import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
+  NavLink,
   Route,
   Link
 } from 'react-router-dom';
@@ -24,90 +31,26 @@ export default function App() {
   return (
     <Router>
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/project">Project</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>  
-        </ul>
-      </nav>
+      <ul>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/about" activeClassName="selected" >About</NavLink></li>
+        <li><NavLink to="/project" activeClassName="selected" >Project</NavLink></li>
+        <li><NavLink to="/contact" activeClassName="selected" >Contact</NavLink></li>  
+      </ul>
 
-      {/* A <Switch> looks through its children <Route>s and
-          renders the first one that matches the current URL. */}
+      
       <Switch>
         <Route path="/about">
-            {/* <About /> */}
-            <div className="App">
-            <header className="App-header">
-              {/* <Welcome name="Didarul"/> */}
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                About <code>src/App.js</code> and save to reload.
-              </p>
-              <a className="App-link" href="https://reactjs.org"target="_blank" rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </header>
-            </div>
+          <About />
         </Route>
-          <Route path="/project">
-                <div className="App">
-            <header className="App-header">
-              {/* <Welcome name="Didarul"/> */}
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Project <code>src/App.js</code> and save to reload.
-              </p>
-              <a className="App-link" href="https://reactjs.org"target="_blank" rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </header>
-          </div>
-          {/* <Users /> */}
+        <Route path="/project">
+          <Project />
         </Route>
         <Route path="/">
-            {/* <Home /> */}
-            <div className="App">
-            <header className="App-header">
-              {/* <Welcome name="Didarul"/> */}
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Home <code>s rc/App.js</code> and save to reload.
-              </p>
-              <a className="App-link" href="https://reactjs.org"target="_blank" rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </header>
-          </div>
-          </Route>
-          <Route path="/contact">
-            {/* <About /> */}
-            <div className="App">
-            <header className="App-header">
-              {/* <Welcome name="Didarul"/> */}
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Contact <code>s rc/App.js</code> and save to cc.
-              </p>
-              <a
-                className="App-link" href="https://reactjs.org"target="_blank" rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </header>
-            </div>
+          <Home />  
+        </Route>
+        <Route path="/contact">
+          <Contact />
         </Route>
       </Switch>
     </div>
