@@ -1,6 +1,7 @@
-import logo from './logo.svg';
 
-
+//Import components
+import Nav from './components/Nav';
+//Import pages
 import Home from './pages/Home';
 import About from './pages/About';
 import Project from './pages/Project';
@@ -17,29 +18,21 @@ import {
   Link
 } from 'react-router-dom';
 
-// function Welcome(props) {
-//   if (props.name.length > 4) {
-//     return <h1>Hello, {props.name}</h1>
-//   }
-//   else {
-//     return <p> too short</p>
-//   }
-// }
+//Import Transtition- group
+//Import timeline
+import { Transition, TransitionGroup } from 'react-transition-group';
+import { play, exit } from './timelines'
+
 
 
 export default function App() {
   return (
-    <Router>
-    <div>
-      <ul>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/about" activeClassName="selected" >About</NavLink></li>
-        <li><NavLink to="/project" activeClassName="selected" >Project</NavLink></li>
-        <li><NavLink to="/contact" activeClassName="selected" >Contact</NavLink></li>  
-      </ul>
+  <Router>
+      <div className="app">
+      <Nav />
 
       
-      <Switch>
+      {/* <Switch>
         <Route path="/about">
           <About />
         </Route>
@@ -52,7 +45,32 @@ export default function App() {
         <Route path="/contact">
           <Contact />
         </Route>
-      </Switch>
+      </Switch> */}
+        
+      <Route render={({ location }) => {
+          const { pathname, key } = location;
+
+          return (
+            <TransitionGroup component={null}>
+              <Transition
+                key={key}
+                appear={true}
+                //gsap animation part
+                onEnter={(node, appears) => play(pathname, node, appears)}
+                onExit={(node, appears) => exit(node, appears)}
+                
+                timeout={{enter: 750, exit: 150}}
+              >
+                <Switch location={location}>
+                  <Route exact path="/" component={Home}/>
+                  <Route path="/about" component={About} />
+                  <Route path="/project" component={Project} />
+                  <Route path="/contact" component={Contact} />
+                </Switch>
+              </Transition>
+            </TransitionGroup>
+          )
+        }}/>
     </div>
   </Router>
 );

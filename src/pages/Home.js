@@ -2,15 +2,14 @@ import './../css/App.css';
 
 export default function Home() {
     return (
-        <div className="App_home">
-            <header className="App-header__home">
-                <p>
-                    Welcome to the Application Universe.
-                </p>
-                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                    Learn Development
-                </a>
-            </header>
+        <div className="view App_home">
+            <h1>Home
+                <div>Watch out bellow</div> 
+                <div className="with--accent">animated</div>
+                <div>Project</div>
+                <div>for <span className="with--accent">You</span></div>
+            </h1>
+
         </div>
     );
 }
